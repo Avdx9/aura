@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Cormorant_Garamond } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Playfair_Display, Cormorant_Garamond, DM_Mono } from 'next/font/google';
 import { LenisProvider } from '@/context/LenisContext';
 import { BookingProvider } from '@/context/BookingContext';
 import { CustomCursor } from '@/components/ui/CustomCursor';
@@ -31,11 +30,11 @@ const cormorant = Cormorant_Garamond({
 });
 
 // Geometric mono for clinical data/pricing
-const geistMono = localFont({
-  src: '../public/fonts/GeistMono-Regular.woff2',
+const geistMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
   variable: '--font-mono',
   display: 'swap',
-  fallback: ['Courier New'],
 });
 
 // ─── Metadata ──────────────────────────────────────────────────────────────────
