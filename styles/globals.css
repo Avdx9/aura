@@ -1,0 +1,436 @@
+/* ============================================================
+   AURA LONGEVITY — Global Stylesheet
+   Built for precision. Obsidian × Champagne × Pearl.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --color-obsidian:    #0e0b07;
+  --color-obsidian-md: #1c170f;
+  --color-champagne:   #c9a96e;
+  --color-champagne-lt:#f4d89a;
+  --color-pearl:       #f5f0e8;
+  --color-sage:        #4a7550;
+
+  /* Typography scale */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Cormorant Garamond', 'Times New Roman', serif;
+  --font-mono:    'GeistMono', 'Courier New', monospace;
+
+  /* Spacing rhythm */
+  --space-section: clamp(5rem, 10vw, 10rem);
+  --space-component: clamp(2.5rem, 5vw, 5rem);
+
+  /* Animation easing */
+  --ease-luxury:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.43, 0.195, 0.02, 1);
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Motion durations */
+  --dur-fast:   200ms;
+  --dur-base:   400ms;
+  --dur-slow:   800ms;
+  --dur-xslow:  1200ms;
+  --dur-epic:   2000ms;
+
+  /* Drawer */
+  --drawer-width: min(520px, 96vw);
+
+  /* Navigation */
+  --nav-height: 80px;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+  }
+
+  body {
+    background-color: var(--color-obsidian);
+    color: var(--color-pearl);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* Suppress custom cursor on touch/mobile */
+  @media (hover: none) {
+    body {
+      cursor: auto !important;
+    }
+    .custom-cursor {
+      display: none !important;
+    }
+  }
+
+  /* Remove default cursor when custom cursor is active */
+  @media (hover: hover) and (pointer: fine) {
+    body,
+    a,
+    button,
+    [role="button"] {
+      cursor: none !important;
+    }
+  }
+
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--color-pearl);
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: rgba(245, 240, 232, 0.8);
+    line-height: 1.75;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--dur-base) var(--ease-luxury);
+  }
+
+  img, video, canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Focus styles — accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(201, 169, 110, 0.25);
+    color: var(--color-pearl);
+  }
+
+  /* Scrollbar — luxury thin style */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-obsidian);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(201, 169, 110, 0.4);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-champagne);
+  }
+}
+
+/* ─── Utility Classes ────────────────────────────────────────── */
+@layer utilities {
+  /* Gradient text — champagne */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #c9a96e 0%, #f4d89a 40%, #c9a96e 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+
+  /* Shimmer effect */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #c9a96e 0%,
+      #f4d89a 20%,
+      #c9a96e 40%,
+      #c9a96e 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Grain overlay */
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/grain.png');
+    background-size: 200px 200px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 10;
+    animation: grain 8s steps(1) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10%       { transform: translate(-1%, -2%); }
+    20%       { transform: translate(2%, 1%); }
+    30%       { transform: translate(-1%, 3%); }
+    40%       { transform: translate(3%, -1%); }
+    50%       { transform: translate(-2%, 2%); }
+    60%       { transform: translate(1%, -3%); }
+    70%       { transform: translate(-3%, 1%); }
+    80%       { transform: translate(1%, -1%); }
+    90%       { transform: translate(-1%, 3%); }
+  }
+
+  /* Split text reveal — GSAP targets */
+  .split-word {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .split-char {
+    display: inline-block;
+  }
+
+  /* WebGL canvas full-bleed */
+  .canvas-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+  }
+
+  /* Separator lines */
+  .line-champagne {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+  }
+
+  /* Overline labels */
+  .label-overline {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-champagne);
+  }
+
+  /* Masked image reveal */
+  .mask-reveal {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path var(--dur-xslow) var(--ease-cinematic);
+  }
+  .mask-reveal.is-visible {
+    clip-path: inset(0% 0 0 0);
+  }
+
+  /* Before/After slider specific */
+  .before-after-clip {
+    clip-path: inset(0 var(--clip-percent, 50%) 0 0);
+  }
+
+  /* Booking drawer */
+  .booking-drawer {
+    transform: translateX(100%);
+    transition: transform 0.7s var(--ease-cinematic);
+  }
+  .booking-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  /* 3D perspective container */
+  .perspective-container {
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+  }
+
+  /* Lenis smooth scroll class applied by library */
+  html.lenis {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+/* ─── Component Styles ───────────────────────────────────────── */
+@layer components {
+  /* Luxury button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-3;
+    @apply font-mono text-xs tracking-[0.25em] uppercase;
+    @apply transition-all duration-500;
+    cursor: none;
+  }
+
+  .btn-primary {
+    @apply btn;
+    @apply bg-champagne-DEFAULT text-obsidian-950;
+    @apply px-8 py-4;
+    @apply relative overflow-hidden;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(135deg, #f4d89a, #c9a96e);
+    transform: translateX(-100%);
+    transition: transform 0.5s var(--ease-cinematic);
+  }
+  .btn-primary:hover::before {
+    transform: translateX(0);
+  }
+  .btn-primary span {
+    @apply relative z-10;
+  }
+
+  .btn-outline {
+    @apply btn;
+    @apply border border-champagne-DEFAULT/40 text-champagne-DEFAULT;
+    @apply px-8 py-4;
+    @apply hover:border-champagne-DEFAULT hover:bg-champagne-DEFAULT/10;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  /* Card base */
+  .card-luxury {
+    @apply bg-obsidian-900/60 backdrop-blur-sm;
+    @apply border border-champagne-DEFAULT/10;
+    @apply transition-all duration-500;
+  }
+  .card-luxury:hover {
+    @apply border-champagne-DEFAULT/30;
+    box-shadow: 0 25px 80px -12px rgba(201, 169, 110, 0.1);
+  }
+
+  /* Section padding */
+  .section-padding {
+    padding-top: var(--space-section);
+    padding-bottom: var(--space-section);
+  }
+
+  /* Container */
+  .container-luxury {
+    @apply mx-auto w-full;
+    padding-left: clamp(1.5rem, 5vw, 6rem);
+    padding-right: clamp(1.5rem, 5vw, 6rem);
+    max-width: 1600px;
+  }
+}
+
+/* ─── Animation States ───────────────────────────────────────── */
+
+/* GSAP will-change hints */
+.gsap-will-change {
+  will-change: transform, opacity;
+}
+
+/* Initial hidden state for GSAP reveals */
+[data-gsap-fade-up] {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+[data-gsap-fade-in] {
+  opacity: 0;
+}
+
+[data-gsap-line] {
+  overflow: hidden;
+}
+[data-gsap-line > span] {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+/* ─── Three.js Canvas ────────────────────────────────────────── */
+.three-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.three-canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── Custom Cursor ──────────────────────────────────────────── */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-pearl);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(245, 240, 232, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s var(--ease-luxury),
+              width 0.4s var(--ease-luxury),
+              height 0.4s var(--ease-luxury),
+              background 0.4s var(--ease-luxury);
+}
+
+.cursor-ring.is-hovering {
+  width: 80px;
+  height: 80px;
+  background: rgba(201, 169, 110, 0.1);
+  border-color: var(--color-champagne);
+}
+
+.cursor-ring.is-clicking {
+  transform: translate(-50%, -50%) scale(0.8);
+}
