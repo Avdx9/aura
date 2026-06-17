@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Cormorant_Garamond, DM_Mono } from 'next/font/google';
 import { LenisProvider } from '@/context/LenisContext';
 import { BookingProvider } from '@/context/BookingContext';
 import { CustomCursor } from '@/components/ui/CustomCursor';
@@ -9,33 +8,11 @@ import { Toaster } from 'react-hot-toast';
 import '@/styles/globals.css';
 
 // ─── Typography ────────────────────────────────────────────────────────────────
-// High-contrast luxury display serif — Didot-esque
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
-  display: 'swap',
-  preload: true,
-});
+// Fonts are loaded via @font-face in globals.css (self-hosted-safe, zero build-time
+// network dependency). This avoids Vercel build failures when fonts.gstatic.com
+// is unreachable from the build container. See styles/globals.css for the
+// --font-display, --font-body, --font-mono variable definitions.
 
-// Editorial body serif — refined, legible
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-body',
-  display: 'swap',
-  preload: true,
-});
-
-// Geometric mono for clinical data/pricing
-const geistMono = DM_Mono({
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-mono',
-  display: 'swap',
-});
 
 // ─── Metadata ──────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -119,7 +96,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${playfairDisplay.variable} ${cormorant.variable} ${geistMono.variable}`}
+      className="font-sans"
       suppressHydrationWarning
     >
       <head>

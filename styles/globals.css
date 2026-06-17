@@ -17,10 +17,12 @@
   --color-pearl:       #f5f0e8;
   --color-sage:        #4a7550;
 
-  /* Typography scale */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'Cormorant Garamond', 'Times New Roman', serif;
-  --font-mono:    'GeistMono', 'Courier New', monospace;
+  /* Typography scale — system font stacks, zero build-time network dependency.
+     These closely approximate the original Playfair Display / Cormorant Garamond
+     aesthetic using fonts already present on most operating systems. */
+  --font-display: Georgia, 'Times New Roman', 'Iowan Old Style', Palatino, serif;
+  --font-body:    Georgia, 'Times New Roman', 'Iowan Old Style', Palatino, serif;
+  --font-mono:    'SF Mono', 'Cascadia Code', 'Courier New', Consolas, monospace;
 
   /* Spacing rhythm */
   --space-section: clamp(5rem, 10vw, 10rem);
@@ -305,7 +307,7 @@
 
   .btn-primary {
     @apply btn;
-    @apply bg-champagne-DEFAULT text-obsidian-950;
+    @apply bg-champagne text-obsidian-950;
     @apply px-8 py-4;
     @apply relative overflow-hidden;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
@@ -326,20 +328,20 @@
 
   .btn-outline {
     @apply btn;
-    @apply border border-champagne-DEFAULT/40 text-champagne-DEFAULT;
+    @apply border border-champagne/40 text-champagne;
     @apply px-8 py-4;
-    @apply hover:border-champagne-DEFAULT hover:bg-champagne-DEFAULT/10;
+    @apply hover:border-champagne hover:bg-champagne/10;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
 
   /* Card base */
   .card-luxury {
     @apply bg-obsidian-900/60 backdrop-blur-sm;
-    @apply border border-champagne-DEFAULT/10;
+    @apply border border-champagne/10;
     @apply transition-all duration-500;
   }
   .card-luxury:hover {
-    @apply border-champagne-DEFAULT/30;
+    @apply border-champagne/30;
     box-shadow: 0 25px 80px -12px rgba(201, 169, 110, 0.1);
   }
 
