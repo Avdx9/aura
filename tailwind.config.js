@@ -9,37 +9,37 @@ module.exports = {
     extend: {
       // Aura Longevity Design System
       colors: {
-        // Primary: Deep Obsidian + Warm Champagne
+        // Primary: Cool Clinical Obsidian + Refined Champagne
         obsidian: {
-          50:  '#f5f3f0',
-          100: '#e8e4dd',
-          200: '#d0c9bb',
-          300: '#b8ac98',
-          400: '#9f8e75',
-          500: '#877352',
-          600: '#6d5c40',
-          700: '#524430',
-          800: '#372d1f',
-          900: '#1c170f',
-          950: '#0e0b07',
+          50:  '#f4f4f5',
+          100: '#e4e4e7',
+          200: '#c7c7cd',
+          300: '#a3a3ad',
+          400: '#75757f',
+          500: '#52525c',
+          600: '#3f3f46',
+          700: '#2d2d33',
+          800: '#1c1c20',
+          900: '#121214',
+          950: '#08080a',
         },
         champagne: {
-          50:  '#fffdf7',
-          100: '#fef9eb',
-          200: '#fdf1cc',
-          300: '#fbe5a0',
-          400: '#f8d26b',
-          500: '#f4bb36',
-          600: '#d99e1a',
-          700: '#b67f0e',
-          800: '#8c5f0a',
-          900: '#634308',
-          DEFAULT: '#c9a96e',
+          50:  '#fbfaf7',
+          100: '#f4f1e9',
+          200: '#e8e0cc',
+          300: '#d9cba3',
+          400: '#c7b27e',
+          500: '#b89a63',
+          600: '#9c7e4a',
+          700: '#7d6339',
+          800: '#5c482a',
+          900: '#3d301c',
+          DEFAULT: '#bfa476',
         },
         pearl: {
-          DEFAULT: '#f5f0e8',
-          warm: '#ede6d6',
-          cool: '#f0eff0',
+          DEFAULT: '#f7f6f3',
+          warm: '#f0ece2',
+          cool: '#f2f3f3',
         },
         // Accent: Sage green for wellness
         sage: {
@@ -77,7 +77,7 @@ module.exports = {
         'fluid-4xl':  'clamp(2.25rem, 1.75rem + 2.5vw, 4rem)',
         'fluid-5xl':  'clamp(3rem, 2rem + 5vw, 6rem)',
         'fluid-6xl':  'clamp(3.75rem, 2.5rem + 6.25vw, 8rem)',
-        'fluid-hero': 'clamp(4rem, 3rem + 8vw, 10rem)',
+        'fluid-hero': 'clamp(2.75rem, 1.8rem + 5vw, 6.5rem)',
       },
 
       spacing: {
@@ -170,8 +170,8 @@ module.exports = {
       },
 
       backgroundImage: {
-        'gradient-champagne': 'linear-gradient(135deg, #c9a96e 0%, #f4d89a 50%, #c9a96e 100%)',
-        'gradient-dark': 'linear-gradient(180deg, #0e0b07 0%, #1c170f 100%)',
+        'gradient-champagne': 'linear-gradient(135deg, #bfa476 0%, #d9cba3 50%, #bfa476 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #08080a 0%, #121214 100%)',
         'gradient-hero': 'linear-gradient(to bottom, rgba(14,11,7,0) 0%, rgba(14,11,7,0.4) 60%, rgba(14,11,7,0.85) 100%)',
         'gradient-radial-gold': 'radial-gradient(ellipse at center, rgba(201,169,110,0.15) 0%, transparent 70%)',
         'noise': "url('/images/noise.png')",

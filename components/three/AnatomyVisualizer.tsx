@@ -104,11 +104,11 @@ export function AnatomyVisualizer({ className, sectionRef }: AnatomyVisualizerPr
     scene.add(fillLight);
 
     // Ambient — low obsidian-tinted
-    const ambientLight = new THREE.AmbientLight(0x1c170f, 0.6);
+    const ambientLight = new THREE.AmbientLight(0x121214, 0.6);
     scene.add(ambientLight);
 
     // Champagne point light for gold accent
-    const accentLight = new THREE.PointLight(0xc9a96e, 1.5, 6);
+    const accentLight = new THREE.PointLight(0xbfa476, 1.5, 6);
     accentLight.position.set(1.5, 0.5, 1.5);
     scene.add(accentLight);
 

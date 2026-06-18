@@ -10,11 +10,11 @@
 /* ─── CSS Custom Properties ─────────────────────────────────── */
 :root {
   /* Brand palette */
-  --color-obsidian:    #0e0b07;
-  --color-obsidian-md: #1c170f;
-  --color-champagne:   #c9a96e;
-  --color-champagne-lt:#f4d89a;
-  --color-pearl:       #f5f0e8;
+  --color-obsidian:    #08080a;
+  --color-obsidian-md: #121214;
+  --color-champagne:   #bfa476;
+  --color-champagne-lt:#d9cba3;
+  --color-pearl:       #f7f6f3;
   --color-sage:        #4a7550;
 
   /* Typography scale — system font stacks, zero build-time network dependency.
@@ -156,7 +156,7 @@
 @layer utilities {
   /* Gradient text — champagne */
   .text-gradient-gold {
-    background: linear-gradient(135deg, #c9a96e 0%, #f4d89a 40%, #c9a96e 100%);
+    background: linear-gradient(135deg, #bfa476 0%, #d9cba3 40%, #bfa476 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -167,10 +167,10 @@
   .text-shimmer {
     background: linear-gradient(
       90deg,
-      #c9a96e 0%,
-      #f4d89a 20%,
-      #c9a96e 40%,
-      #c9a96e 100%
+      #bfa476 0%,
+      #d9cba3 20%,
+      #bfa476 40%,
+      #bfa476 100%
     );
     background-size: 200% auto;
     background-clip: text;
@@ -315,7 +315,7 @@
   .btn-primary::before {
     content: '';
     @apply absolute inset-0;
-    background: linear-gradient(135deg, #f4d89a, #c9a96e);
+    background: linear-gradient(135deg, #d9cba3, #bfa476);
     transform: translateX(-100%);
     transition: transform 0.5s var(--ease-cinematic);
   }

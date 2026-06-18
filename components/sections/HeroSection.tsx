@@ -42,12 +42,12 @@ export function HeroSection() {
   // ── GSAP Intro Animation ─────────────────────────────────────────────────
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.3 });
+      const tl = gsap.timeline({ delay: 0.15 });
 
       // Kicker label
       tl.fromTo(kickerRef.current,
         { opacity: 0, y: 12, letterSpacing: '0.5em' },
-        { opacity: 1, y: 0,  letterSpacing: '0.3em', duration: 1.2, ease: 'power3.out' }
+        { opacity: 1, y: 0,  letterSpacing: '0.3em', duration: 0.7, ease: 'power3.out' }
       );
 
       // Headline lines — individual word reveal
@@ -58,31 +58,31 @@ export function HeroSection() {
         tl.to(spans, {
           y: 0,
           opacity: 1,
-          duration: 1.1,
-          stagger: 0.06,
+          duration: 0.65,
+          stagger: 0.035,
           ease: 'power3.out',
-        }, i === 0 ? '-=0.8' : '-=0.9');
+        }, i === 0 ? '-=0.45' : '-=0.5');
       });
 
       // Body copy
       tl.fromTo(bodyRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0,  duration: 1.0, ease: 'power2.out' },
-        '-=0.6'
+        { opacity: 1, y: 0,  duration: 0.6, ease: 'power2.out' },
+        '-=0.35'
       );
 
       // CTA buttons
       tl.fromTo(ctaRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0,  duration: 0.9, ease: 'power2.out' },
-        '-=0.7'
+        { opacity: 1, y: 0,  duration: 0.55, ease: 'power2.out' },
+        '-=0.4'
       );
 
       // Scroll indicator
       tl.fromTo(scrollRef.current,
         { opacity: 0 },
-        { opacity: 1,  duration: 0.8, ease: 'power2.out' },
-        '-=0.4'
+        { opacity: 1,  duration: 0.5, ease: 'power2.out' },
+        '-=0.25'
       );
 
     }, sectionRef);
@@ -113,7 +113,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-obsidian-950/60 via-transparent to-transparent" />
 
       {/* ── Content ──────────────────────────────────────────────────────── */}
-      <div className="relative z-20 h-full flex flex-col justify-end pb-16 lg:pb-24">
+      <div className="relative z-20 h-full flex flex-col justify-end pb-12 lg:pb-20 pt-[calc(var(--nav-height)+2rem)]">
         <div className="container-luxury">
 
           {/* Kicker / location */}
@@ -126,8 +126,8 @@ export function HeroSection() {
           </p>
 
           {/* Headline — three lines with italic on middle word */}
-          <h1 className="font-display font-normal text-fluid-hero text-pearl leading-[0.88]
-                          tracking-[-0.03em] mb-8 max-w-[12ch]">
+          <h1 className="font-display font-normal text-fluid-hero text-pearl leading-[0.95]
+                          tracking-[-0.02em] mb-8 max-w-[90vw] lg:max-w-[18ch] break-words">
             {/* Line 1 */}
             <span
               ref={headline1Ref}
@@ -164,7 +164,7 @@ export function HeroSection() {
           {/* Body copy */}
           <p
             ref={bodyRef}
-            className="font-body text-fluid-lg text-pearl/60 max-w-sm leading-relaxed mb-10 opacity-0"
+            className="font-body text-fluid-lg text-pearl/60 max-w-sm leading-relaxed mb-8 opacity-0"
           >
             {HERO_BODY}
           </p>
@@ -191,7 +191,7 @@ export function HeroSection() {
           </div>
 
           {/* Statistics strip */}
-          <div className="mt-14 flex gap-10 border-t border-pearl/10 pt-8">
+          <div className="mt-10 flex gap-10 border-t border-pearl/10 pt-6">
             {[
               { value: '2,400+', label: 'Treatments Delivered' },
               { value: '98%',    label: 'Client Satisfaction' },

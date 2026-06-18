@@ -47,7 +47,7 @@ export function LenisProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const lenisInstance = new Lenis({
-      duration: 1.4,
+      duration: 1.0,
       easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',

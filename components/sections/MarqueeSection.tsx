@@ -27,7 +27,7 @@ export function MarqueeSection() {
 
     const anim = gsap.to(track, {
       x: `-=${totalWidth}`,
-      duration: 28,
+      duration: 16,
       ease: 'none',
       repeat: -1,
       modifiers: {

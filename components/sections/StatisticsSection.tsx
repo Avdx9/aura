@@ -34,7 +34,7 @@ export function StatisticsSection() {
         if (!el) return;
         const stat = STATS[i];
         animateCounter(el, stat.value, {
-          duration: 2.8,
+          duration: 1.3,
           prefix:   stat.prefix,
           suffix:   stat.suffix,
           decimals: stat.decimals,

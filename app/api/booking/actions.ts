@@ -175,12 +175,13 @@ export async function submitBooking(data: BookingFormData): Promise<BookingResul
     let bookingId: string;
     let confirmedAt: string;
 
-    if (process.env.NODE_ENV === 'development') {
-      // Development simulation — skip real API call
+    if (!process.env.PABAU_API_KEY) {
+      // No Pabau key configured — simulate success so the site is usable
+      // before the clinic management system is connected.
       await new Promise((r) => setTimeout(r, 1200)); // Simulate network latency
-      bookingId   = `DEV-${Date.now()}`;
+      bookingId   = `PENDING-${Date.now()}`;
       confirmedAt = new Date().toISOString();
-      console.log('[Dev] Booking payload:', JSON.stringify(payload, null, 2));
+      console.log('[Booking] No PABAU_API_KEY set — simulated booking:', JSON.stringify(payload, null, 2));
     } else {
       const result = await createPabauAppointment(payload);
       bookingId   = result.id;
@@ -219,8 +220,8 @@ export async function getAvailableSlots(
     const apiKey  = process.env.PABAU_API_KEY;
     const baseUrl = process.env.PABAU_API_BASE_URL ?? 'https://api.pabau.com/v2';
 
-    if (!apiKey || process.env.NODE_ENV === 'development') {
-      // Return mock availability in development
+    if (!apiKey) {
+      // Return mock availability when no Pabau key is configured
       return ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'];
     }
 

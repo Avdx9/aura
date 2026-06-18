@@ -312,7 +312,7 @@ export function animateCounter(
     decimals?: number;
   } = {}
 ): void {
-  const { duration = 2.5, prefix = '', suffix = '', decimals = 0 } = options;
+  const { duration = 1.4, prefix = '', suffix = '', decimals = 0 } = options;
 
   const counter = { value: 0 };
 
